@@ -1,25 +1,29 @@
 const express = require('express');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 const { v4: uuidv4 } = require('uuid');
 const fs = require('fs');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
-if (!fs.existsSync('./data')) {
-  fs.mkdirSync('./data');
+// Ensure data directory exists
+const dataDir = path.join(__dirname, 'data');
+if (!fs.existsSync(dataDir)) {
+  fs.mkdirSync(dataDir);
 }
 
-const DATA_FILE = './data/tickets.json';
+const DATA_FILE = path.join(dataDir, 'tickets.json');
 
+// Initialize tickets file if not exists
 if (!fs.existsSync(DATA_FILE)) {
   fs.writeFileSync(DATA_FILE, JSON.stringify([]));
 }
 
+// Helper functions
 const readTickets = () => {
   const data = fs.readFileSync(DATA_FILE);
   return JSON.parse(data);
@@ -29,6 +33,7 @@ const writeTickets = (tickets) => {
   fs.writeFileSync(DATA_FILE, JSON.stringify(tickets, null, 2));
 };
 
+// Routes
 app.get('/api/tickets', (req, res) => {
   const tickets = readTickets();
   res.json(tickets);
@@ -123,7 +128,11 @@ app.delete('/api/tickets/:id', (req, res) => {
   res.json({ message: 'Ticket deleted successfully' });
 });
 
-const PORT = process.env.PORT || 5000;
+// Root endpoint for testing
+app.get('/', (req, res) => {
+  res.json({ message: 'Black Cap IT Backend API is running!' });
+});
+
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`✅ Backend server running at http://localhost:${PORT}`);
+  console.log(`✅ Backend server running on port ${PORT}`);
 });
