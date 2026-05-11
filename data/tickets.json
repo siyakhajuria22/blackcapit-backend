@@ -1,0 +1,26 @@
+[
+  {
+    "id": "c483820b-2fa8-4c6f-925f-fb03586870d4",
+    "ticketNumber": "BCK-1540",
+    "clientName": "Siya Khajuria",
+    "businessName": "Airtel",
+    "issueType": "Hosting issue",
+    "description": "can not host ",
+    "status": "Open",
+    "createdAt": "2026-05-06T17:52:31.356Z",
+    "updatedAt": "2026-05-06T17:52:31.356Z",
+    "internalComments": []
+  },
+  {
+    "id": "3fe7ffff-1eb0-4dae-9cdc-daba4d83dd3c",
+    "ticketNumber": "BCK-6067",
+    "clientName": "wqydqwnddbjwdw",
+    "businessName": "Airtel",
+    "issueType": "Website bug",
+    "description": "ijdw,d1",
+    "status": "Open",
+    "createdAt": "2026-05-07T12:36:22.532Z",
+    "updatedAt": "2026-05-07T12:36:22.532Z",
+    "internalComments": []
+  }
+]
