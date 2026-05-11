@@ -136,6 +136,12 @@ app.get('/', (req, res) => {
   res.json({ message: 'Black Cap IT Backend API is running!' });
 });
 
+// Test endpoint for debugging
+app.post('/api/test', (req, res) => {
+  console.log('Test endpoint hit!', req.body);
+  res.json({ message: 'Backend is working!', received: req.body });
+});
+
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`✅ Backend server running on port ${PORT}`);
 });
